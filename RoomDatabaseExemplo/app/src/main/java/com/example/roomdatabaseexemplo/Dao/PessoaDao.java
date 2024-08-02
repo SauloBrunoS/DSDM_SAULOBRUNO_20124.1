@@ -17,7 +17,6 @@ public interface PessoaDao {
 
     @Insert
     void insertAll(Pessoa...pessoas);
-
-    @Delete
-    void delete(Pessoa pessoa);
+    @Query("DELETE FROM pessoa WHERE uid = :id")
+    void deleteById(int id);
 }

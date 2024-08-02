@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                     pessoaArrayAdapter.addPessoa(novaPessoa);
 
-                    Toast.makeText(MainActivity.this, "Nova Pessoa Adicionada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, novaPessoa.getNome() + " Adicionado com Sucesso!", Toast.LENGTH_SHORT).show();
                 } catch (NumberFormatException e) {
                     Toast.makeText(MainActivity.this, "Idade inválida! Por favor, insira um número.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
@@ -131,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     int position = viewHolder.getAdapterPosition();
                     Pessoa pessoaToDelete = pessoaArrayAdapter.getPessoaPorPosicao(position);
-                    pessoaDao.delete(pessoaToDelete);
+                    pessoaDao.deleteById(pessoaToDelete.getUid());
                     pessoaArrayAdapter.deletePessoa(pessoaToDelete);
-                    Toast.makeText(MainActivity.this, "Pessoa removida com sucesso!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, pessoaToDelete.getNome() + " Removido com Sucesso!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(MainActivity.this, "Ocorreu um erro ao remover a pessoa!", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
